@@ -1,0 +1,21 @@
+body{
+  margin: 0;
+  overflow: hidden;
+}
+
+#camera{
+  width: 100vw; 
+  height: 100vh;
+  overflow: hidden;
+  background-color: #87CEEB ;
+}
+
+
+#scene{
+  position: absolute;
+  bottom: 0;
+  width: 400%;
+  height: 30%;
+  background-color: green;
+}
+
