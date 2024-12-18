@@ -1,0 +1,72 @@
+
+#Golden{
+  width: 182px;
+  height: 147px;
+  position: relative;
+  transform-origin: center;
+  transform: translateX(200px);
+}
+
+#head{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: -45%;
+  left: 50%;
+}
+
+#leftLeg{
+  position: absolute;
+  left: 45px;
+  bottom: 0;
+}
+
+.legWave {
+  transform-origin: top center; 
+  animation: wave 2.5s ease-in-out; 
+
+}
+
+@keyframes wave {
+  0%,100% {
+    transform: rotate(0deg);  
+  }
+
+  30% {
+    transform: rotate(160deg);
+  }
+
+  50%{
+    transform: rotate(80deg);
+  }
+
+  70%{
+    transform: rotate(160deg);
+  }
+}
+
+
+#tail{
+  position: absolute;
+  transform-origin: bottom left; 
+  bottom: 50px;
+  right: -70px;
+  z-index: -5;
+}
+
+.tailWagging-3 {
+  animation: tailWagging 3s ease-in-out infinite; 
+}
+
+.tailWagging-07 {
+  animation: tailWagging .7s ease-in-out infinite; 
+}
+
+@keyframes tailWagging {
+  0%,100% {
+    transform: rotate(20deg);  
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+}

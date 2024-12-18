@@ -1,0 +1,17 @@
+
+
+#eyes{
+  position: relative;
+  transform-origin: center center; 
+  left: 21.5px;
+  top: -285px;
+}
+
+#mouth{
+  transform-origin: center center; 
+  position: absolute;
+  top: -47px;
+  right: 49px;
+}
+
+
