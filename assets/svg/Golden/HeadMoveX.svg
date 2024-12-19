@@ -1,0 +1,47 @@
+
+<svg
+  width="55.299343mm"
+  height="38.408543mm"
+  viewBox="0 0 55.299343 38.408543"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:svg="http://www.w3.org/2000/svg">
+  
+  <g transform="translate(-83.162214, -96.3012)">
+    <rect
+      style="fill:#ffe9b5;fill-opacity:1;stroke:none;stroke-width:1.4522"
+      id="rect5-3-2-1"
+      width="39.907314"
+      height="37.171005"
+      x="90.911156"
+      y="97.538734"
+      ry="1.2361225" />
+    <rect
+      style="fill:#ffda87;fill-opacity:1;stroke:none;stroke-width:1.162;stroke-dasharray:none"
+      id="rect6-5-7-1"
+      width="24.67524"
+      height="11.960967"
+      x="102.95802"
+      y="121.26002"
+      ry="2.9276586" />
+    <rect
+      style="fill:#f1cc77;fill-opacity:1;stroke:none;stroke-width:0.856834"
+      id="rect7-1-7-5"
+      width="7.7640734"
+      height="20.678885"
+      x="92.246468"
+      y="89.03569"
+      ry="1.2168963"
+      transform="rotate(4.6404665)" />
+    <rect
+      style="fill:#f1cc77;fill-opacity:1;stroke:none;stroke-width:0.856834"
+      id="rect7-8-2-9-2"
+      width="7.7640734"
+      height="20.678885"
+      x="-128.64175"
+      y="107.07735"
+      ry="1.2168963"
+      transform="matrix(-0.99672199,0.0809029,0.0809029,0.99672199,0,0)" />
+  </g>
+</svg>

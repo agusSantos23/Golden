@@ -1,0 +1,51 @@
+
+<svg
+  width="11.656654mm"
+  height="29.718599mm"
+  viewBox="0 0 11.656654 29.718599"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:svg="http://www.w3.org/2000/svg">
+  
+  <g transform="translate(-219.467647, -116.1358047)">
+
+    <path
+      id="rect5-5-1-7-2-1-7-2-0-7"
+      style="fill:#ffe9b5;fill-opacity:1;stroke:none;stroke-width:0.147125"
+      d="m 222.2041,116.13583 c -1.51598,0 -2.73627,1.22029 -2.73627,2.73627 v 24.24555 c 0,1.51598 1.22029,2.73678 2.73627,2.73678 11.06913,0 -3.04975,-0.007 8.47132,-0.007 0.24891,0 0.44907,-0.20067 0.44907,-0.44959 v -2.91971 c 0,-0.24892 -0.19689,-0.4482 -0.44907,-0.44907 -0.0364,-1.3e-4 -2.73606,-0.16374 -3.50929,0.0844 l 0.004,-23.24112 c 2.7e-4,-1.51598 -1.22028,-2.73627 -2.73626,-2.73627 z"
+      sodipodi:nodetypes="sssssssscsss" />
+
+    <path
+      style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.395515;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+      id="path1-6-3-5-3"
+      sodipodi:type="arc"
+      sodipodi:cx="-230.01164"
+      sodipodi:cy="144.46483"
+      sodipodi:rx="0.39972377"
+      sodipodi:ry="1.4272535"
+      sodipodi:start="2.2158393"
+      sodipodi:end="4.4391649"
+      sodipodi:arc-type="arc"
+      d="m -230.25197,145.60531 a 0.39972377,1.4272535 0 0 1 -0.15251,-1.4043 0.39972377,1.4272535 0 0 1 0.28498,-1.11049"
+      sodipodi:open="true"
+      transform="scale(-1,1)" />
+
+    <path
+      style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.395515;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+      id="path1-2-0-6-4-3"
+      sodipodi:type="arc"
+      sodipodi:cx="-228.30952"
+      sodipodi:cy="144.44604"
+      sodipodi:rx="0.39972377"
+      sodipodi:ry="1.4272535"
+      sodipodi:start="2.2158393"
+      sodipodi:end="4.4391649"
+      sodipodi:arc-type="arc"
+      d="m -228.54985,145.58653 a 0.39972377,1.4272535 0 0 1 -0.15251,-1.4043 0.39972377,1.4272535 0 0 1 0.28498,-1.1105"
+      sodipodi:open="true"
+      transform="scale(-1,1)" />
+
+
+  </g>
+</svg>

@@ -1,32 +1,49 @@
-
-#Golden{
-  width: 182px;
-  height: 147px;
-  position: relative;
-  transform-origin: center;
-  transform: translateX(200px);
+svg {
+  overflow: visible;
 }
 
-#head{
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: -45%;
+#Golden{
+  position: relative;
+  left: 15%;
+  transform-origin: center;
+  scale: .7;
+}
+
+
+
+.bodyStop{
+  width: 182px;
+  height: 147px;
+}
+
+.bodyMove{
+  width: 248px;
+  height: 122px;
+}
+
+.headStop{
+  transform: translate(-50%, -100%);
+  bottom: 95%;
   left: 50%;
 }
 
-#leftLeg{
+.headMove{
+  top: -160%;
+  right: -60%;
+}
+
+#leftLegStop{
   position: absolute;
   left: 45px;
   bottom: 0;
 }
 
-.legWave {
+.legWave{
   transform-origin: top center; 
   animation: wave 2.5s ease-in-out; 
-
 }
 
-@keyframes wave {
+@keyframes wave{
   0%,100% {
     transform: rotate(0deg);  
   }
@@ -45,7 +62,135 @@
 }
 
 
-#tail{
+
+
+
+
+
+
+#legMoveStopFL{
+  transform-origin: top center;
+  position: absolute;
+  z-index: -1;
+  top: 90px;
+  right: 0;
+}
+
+.legMoveStartFL{
+  animation: walkFL 1s linear infinite;
+}
+
+@keyframes walkFL {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-30deg);
+  }
+
+  75% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+
+
+#legMoveStopFR{
+  transform-origin: top center;
+  position: absolute;
+  top: 90px;
+  right: 40px;
+}
+
+.legMoveStartFR{
+  animation: walkFR 1s linear infinite;
+}
+
+@keyframes walkFR {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(30deg);
+  }
+
+  75% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+
+#legMoveStopBL{
+  transform-origin: top center;
+  position: absolute;
+  z-index: -1;
+  top: 90px;
+  left: 70px;
+}
+
+.legMoveStartBL{
+  animation: walkBL 1s linear infinite;
+}
+
+@keyframes walkBL {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(30deg);
+  }
+
+  75% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+
+#legMoveStopBR{
+  transform-origin: top center;
+  position: absolute;
+  top: 90px;
+  left: 30px;
+}
+
+.legMoveStartBR{
+  animation: walkBR 1s linear infinite;
+}
+
+@keyframes walkBR {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-30deg);
+  }
+  75% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+
+.moveRight{
+  animation: moveRight 2s ease-in-out forwards;
+}
+
+
+
+
+
+.tailStop{
   position: absolute;
   transform-origin: bottom left; 
   bottom: 50px;
@@ -53,20 +198,47 @@
   z-index: -5;
 }
 
-.tailWagging-3 {
-  animation: tailWagging 3s ease-in-out infinite; 
+.tailMove{
+  position: absolute;
+  transform-origin: bottom left; 
+  bottom: 50px;
+  left: 50px;
+  z-index: -5;
+  transform: scaleX(-1);
 }
 
-.tailWagging-07 {
-  animation: tailWagging .7s ease-in-out infinite; 
+.tailWaggingStop-3 {
+  animation: tailWaggingStop 3s ease-in-out infinite; 
 }
 
-@keyframes tailWagging {
+.tailWaggingStop-07 {
+  animation: tailWaggingStop .7s ease-in-out infinite; 
+}
+
+@keyframes tailWaggingStop {
   0%,100% {
     transform: rotate(20deg);  
   }
 
   50% {
     transform: rotate(-10deg);
+  }
+}
+
+.tailWaggingMove-3 {
+  animation: tailWaggingMove 3s ease-in-out infinite; 
+}
+
+.tailWaggingMove-07 {
+  animation: tailWaggingMove .7s ease-in-out infinite; 
+}
+
+@keyframes tailWaggingMove {
+  0%,100% {
+    transform: scaleX(-1) rotate(20deg);  
+  }
+
+  50% {
+    transform: scaleX(-1) rotate(-10deg);
   }
 }

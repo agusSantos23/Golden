@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; object-src 'none'; style-src 'self' 'unsafe-inline';">
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="./css/golden.css">
   <link rel="stylesheet" href="./css/goldenFace.css">
@@ -13,10 +14,9 @@
 
   <div id="floor">
 
-    <div id="Golden">
+    <div id="Golden" class="bodyStop">
       
-      <svg id="tail"
-        class="tailWagging-3"
+      <svg id="tail" class="tailStop tailWaggingMove-3"
         width="142px"
         height="112px"
         viewBox="178 34 20 30">
@@ -47,165 +47,141 @@
      
       </svg>
 
-      <img id="body" src="./assets/svg/Golden/bodyStop.svg" alt="Golden Body">
+      <img id="imgBody" src="./assets/svg/Golden/bodyStop.svg" alt="Golden Body">
 
-      <img id="head" src="./assets/svg/Golden/faceBasic.svg" alt="Golden Head">
+      <!--HEAD-->
+      <div id="divHead" class="headStop">
+        <img id="imgHead"  src="./assets/svg/Golden/faceStop.svg" alt="Golden Head">
 
-      <svg id="eyes"
-        width="139px"
-        height="43px"
-        viewBox="90.8 98 40 12">
+        <div id="divEyes">
+          <svg
+            width="139px"
+            height="43px"
+            viewBox="90.8 98 40 12">
 
-        <rect
-          fill="#ffffff" 
-          fill-opacity="1" 
-          stroke="none" 
-          stroke-width="0.85844"
-          id="rect13-1"
-          width="11.445864"
-          height="11.445864"
-          x="92.31884"
-          y="98.5"
-          ry="4.4890766" />
+            <rect
+              fill="#ffffff" 
+              fill-opacity="1" 
+              stroke="none" 
+              stroke-width="0.85844"
+              id="rect13-1"
+              width="11.445864"
+              height="11.445864"
+              x="92.31884"
+              y="98.5"
+              ry="4.4890766" />
 
-        <rect
-          fill="#ffffff" 
-          fill-opacity="1" 
-          stroke="none" 
-          stroke-width="0.85844"
-          id="rect14-8"
-          width="11.445864"
-          height="11.445864"
-          x="117.89925"
-          y="98.5"
-          ry="4.4890766" />
+            <rect
+              fill="#ffffff" 
+              fill-opacity="1" 
+              stroke="none" 
+              stroke-width="0.85844"
+              id="rect14-8"
+              width="11.445864"
+              height="11.445864"
+              x="117.89925"
+              y="98.5"
+              ry="4.4890766" />
 
-        <rect
-          fill="#000000" 
-          fill-opacity="1" 
-          stroke="none" 
-          stroke-width="0.305089"
-          id="rect15-9"
-          width="4.0678439"
-          height="4.0678439"
-          x="121.58826"
-          y="102.18901"
-          ry="1.5954114" />
+            <rect id="rectIrisR"
+              fill="#000" 
+              fill-opacity="1" 
+              stroke="none" 
+              stroke-width="0.305089"
+              id="rect15-9"
+              width="5.5"
+              height="5.5"
+              x="121"
+              y="101.8"
+              ry="1.5954114" />
+        
+            <rect id="rectIrisL"
+              fill="#000" 
+              fill-opacity="1" 
+              stroke="none" 
+              stroke-width="0.305089"
+              id="rect15-9-82"
+              width="5.5"
+              height="5.5"
+              x="95.5"
+              y="101.8"
+              ry="1.5954114" />
+        
 
-        <rect
-          fill="#000000" 
-          fill-opacity="1" 
-          stroke="none" 
-          stroke-width="0.305089"
-          id="rect15-9-82"
-          width="4.0678439"
-          height="4.0678439"
-          x="96.007851"
-          y="102.18901"
-          ry="1.5954114" />
-
-      </svg>
-
-      <svg id="mouth"
-        width="21.110741mm"
-        height="9.2567396mm"
-        viewBox="102 120.4 19 10">
-     
-        <path
-          fill="#ffda87" 
-          fill-opacity="1" 
-          stroke="#000000" 
-          stroke-width="0.5" 
-          stroke-linecap="round" 
-          stroke-dasharray="none" 
-          stroke-opacity="1"
-          d="m 111.39116,125.8691 a 4.593307,4.0324888 0 0 1 -4.60823,3.93825 4.593307,4.0324888 0 0 1 -4.57652,-3.96665"/>
-
-        <path
-          fill="#ffda87" 
-          fill-opacity="1" 
-          stroke="#000000" 
-          stroke-width="0.5" 
-          stroke-linecap="round" 
-          stroke-dasharray="none" 
-          stroke-opacity="1"
-          d="m 120.57541,125.87032 a 4.593307,4.0324888 0 0 1 -4.60823,3.93825 4.593307,4.0324888 0 0 1 -4.57652,-3.96665"/>
-
-        <rect
-          fill="#000000" 
-          fill-opacity="1" 
-          stroke="none" 
-          stroke-width="0.5"
-          width="7.7640734"
-          height="4.9996457"
-          x="107.54929"
-          y="120.80186"
-          ry="2.4998229" />
-
-        <path
-          fill="none" 
-          fill-opacity="1" 
-          stroke="#000" 
-          stroke-width="0.5"
-          stroke-linecap="round"
-          d="m -162.63809,-61.135463 a 1.3641306,1.1975776 0 0 1 -0.74438,1.039039 1.3641306,1.1975776 0 0 1 -1.39505,-0.08189"
-          transform="rotate(-153.98819)" />
-
-        <path
-          fill="none" 
-          fill-opacity="1" 
-          stroke="#000" 
-          stroke-width="0.5"
-          stroke-linecap="round"
-          d="m 37.64349,-158.69334 a 1.3641306,1.1975776 0 0 1 -0.744382,1.03904 1.3641306,1.1975776 0 0 1 -1.395054,-0.0819"
-          transform="matrix(0.89870367,-0.4385564,-0.4385564,-0.89870367,-5.7916668e-7,-7.375e-7)" />
+          </svg>
+        </div>
+        
+        <div id="divMouth" class="divMouthStop">
+          <svg 
+            width="21.110741mm"
+            height="9.2567396mm"
+            viewBox="102 120.4 19 10">
       
-      </svg>
+            <path
+              fill="#ffda87" 
+              fill-opacity="1" 
+              stroke="#000" 
+              stroke-width="0.5" 
+              stroke-linecap="round" 
+              stroke-dasharray="none" 
+              stroke-opacity="1"
+              d="m 111.39116,125.8691 a 4.593307,4.0324888 0 0 1 -4.60823,3.93825 4.593307,4.0324888 0 0 1 -4.57652,-3.96665"/>
 
+            <path
+              fill="#ffda87" 
+              fill-opacity="1" 
+              stroke="#000" 
+              stroke-width="0.5" 
+              stroke-linecap="round" 
+              stroke-dasharray="none" 
+              stroke-opacity="1"
+              d="m 120.57541,125.87032 a 4.593307,4.0324888 0 0 1 -4.60823,3.93825 4.593307,4.0324888 0 0 1 -4.57652,-3.96665"/>
 
-      <svg id="leftLeg"
-        width="37px"
-        height="113px"
-        viewBox="154 60 10 7">
+            <rect
+              fill="#000" 
+              fill-opacity="1" 
+              stroke="none" 
+              stroke-width="0.5"
+              width="7.7640734"
+              height="4.9996457"
+              x="107.54929"
+              y="120.80186"
+              ry="2.4998229" />
 
-        <rect
-          fill="#ffe9b5" 
-          fill-opacity="1" 
-          stroke="none" 
-          stroke-width="0.647206"
-          width="9.9144363"
-          height="29.718401"
-          x="154.39778"
-          y="48.763412"
-          ry="2.7364264" />
+            <path
+              fill="none" 
+              fill-opacity="1" 
+              stroke="#000" 
+              stroke-width="0.5"
+              stroke-linecap="round"
+              d="m -162.63809,-61.135463 a 1.3641306,1.1975776 0 0 1 -0.74438,1.039039 1.3641306,1.1975776 0 0 1 -1.39505,-0.08189"
+              transform="rotate(-153.98819)" />
 
-        <path
-          fill="none"
-          stroke="black"
-          stroke-width="0.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-dasharray="none"
-          stroke-opacity="1"
-          d="m 157.52499,78.509636 a 0.60370475,1.5102614 0 0 1 -0.23034,-1.485967 0.60370475,1.5102614 0 0 1 0.4304,-1.175083" />
+            <path
+              fill="none" 
+              fill-opacity="1" 
+              stroke="#000" 
+              stroke-width="0.5"
+              stroke-linecap="round"
+              d="m 37.64349,-158.69334 a 1.3641306,1.1975776 0 0 1 -0.744382,1.03904 1.3641306,1.1975776 0 0 1 -1.395054,-0.0819"
+              transform="matrix(0.89870367,-0.4385564,-0.4385564,-0.89870367,-5.7916668e-7,-7.375e-7)" />
+          
+          </svg>
 
-        <path
-          fill="none"
-          stroke="black"
-          stroke-width="0.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-dasharray="none"
-          stroke-opacity="1"
-          d="m 160.09568,78.489754 a 0.60370475,1.5102614 0 0 1 -0.23033,-1.485968 0.60370475,1.5102614 0 0 1 0.4304,-1.175082" />
+        </div>
+        
+
+      </div>
       
-      </svg>
 
+      <!--LEGS-->
+      <div id="divLegs">
+        <img id="leftLegStop" src="./assets/svg/Golden/leftLeg.svg" alt="Golden left leg">
+       
+      </div>
     </div>
-    
   </div>
 
-  
   <script src="./js/goldenMoves.js"></script>
 </body>
 </html>

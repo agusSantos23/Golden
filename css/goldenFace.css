@@ -1,17 +1,42 @@
+#divHead{
+  position: relative;
+  width: max-content;
+  height: 145px;
+}
 
-
-#eyes{
+#divEyes{
+  width: max-content;
+  height: max-content;
   position: relative;
   transform-origin: center center; 
-  left: 21.5px;
-  top: -285px;
+  transform: translate(-50%, 50%);
+  left: 52%;
+  top: -115%;
 }
 
-#mouth{
+
+.irisMove{
+  transform: translate(3px);
+  transform-origin: center;
+  transition: transform .2s ease-in-out;
+}
+
+#divMouth{
+  width: max-content;
+  height: max-content;
   transform-origin: center center; 
   position: absolute;
-  top: -47px;
-  right: 49px;
+  transform: translate(-50%, -50%);
+  
 }
 
+.divMouthStop{
+  bottom: -2%;
+  right: 10%;
+}
+
+.divMouthMove{
+  bottom: 0;
+  right: 3px;
+}
 
