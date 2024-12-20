@@ -3,11 +3,13 @@ svg {
 }
 
 #Golden{
+  transform-origin: center center;
   position: relative;
-  left: 15%;
-  transform-origin: center;
-  scale: .7;
+  left: 60%;
+  transform: scale(.7);
+  transition: transform .5s;
 }
+
 
 
 

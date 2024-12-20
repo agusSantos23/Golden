@@ -1,13 +1,39 @@
 const golden = document.getElementById('Golden')
 
 let lastTime = null
-let goalPosition = null
-let moveTo = null
-let positionX = 0
-const stepSize = 100
+let positionX = 60
+let limit = []
+const stepSize = 1
 const duration = 1000
 
-const move = (side, destination, time) => {
+const positionFloor = position => {
+  const floor = document.getElementById('floor')
+  switch (position) {
+    case 2:
+      limit[0] = 51.5
+      limit[1] = 69
+      break
+
+    default:
+      break
+  }
+
+  floor.style.transform = `translateX(-${position * window.innerWidth}px)`
+}
+
+const move = (side, destination, time, isFirstRun = true) => {
+  const stopMove = () => {
+    lastTime = null
+
+    legFL.classList.remove('legMoveStartFL')
+    legFR.classList.remove('legMoveStartFR')
+    legBL.classList.remove('legMoveStartBL')
+    legBR.classList.remove('legMoveStartBR')
+
+    rectIrisR.classList.remove('irisMove')
+    rectIrisL.classList.remove('irisMove')
+  }
+
   if (!golden.classList.contains('bodyMove')) return
 
   const legFL = document.getElementById('legMoveStopFL')
@@ -26,38 +52,40 @@ const move = (side, destination, time) => {
   rectIrisR.classList.add('irisMove')
   rectIrisL.classList.add('irisMove')
 
-  if (!lastTime) lastTime = time
+  // En la primera ejecucion
+  if (isFirstRun) {
+    side === 'r' ? destination += positionX : destination = positionX - destination
+  }
+
+  if (!lastTime) {
+    lastTime = time
+  }
 
   // Tiempo desde el ultimo frame
   const deltaTime = time - lastTime
   lastTime = time
   // Calcular el desplazamiento basado en el tiempo transcurrido
   const displacementPerMillisecond = stepSize / duration
-  positionX += displacementPerMillisecond * deltaTime
-  console.log('position', positionX)
 
-  // Aplicar desplazamiento y invertido
-  golden.style.transform = side === 'r' ? `translateX(${positionX}px)` : `translateX(-${positionX}px) scaleX(-1)`
-  console.log(positionX >= destination)
-
-  goalPosition === null ? moveTo = destination : moveTo = goalPosition
-
-  if (positionX >= moveTo || positionX > window.innerWidth) {
-    goalPosition += destination
-    lastTime = null
-
-    legFL.classList.remove('legMoveStartFL')
-    legFR.classList.remove('legMoveStartFR')
-    legBL.classList.remove('legMoveStartBL')
-    legBR.classList.remove('legMoveStartBR')
-
-    rectIrisR.classList.remove('irisMove')
-    rectIrisL.classList.remove('irisMove')
-
-    return
+  if (side === 'r') {
+    if (positionX >= destination || positionX >= limit[1]) {
+      stopMove()
+      return
+    }
+    positionX += displacementPerMillisecond * deltaTime
+    golden.style.left = `${positionX}%`
+    golden.style.transform = ''
+  } else {
+    if (positionX <= destination || positionX <= limit[0]) {
+      stopMove()
+      return
+    }
+    positionX -= displacementPerMillisecond * deltaTime
+    golden.style.left = `${positionX}%`
+    golden.style.transform = 'scale(.7) scaleX(-1)'
   }
 
-  requestAnimationFrame(time => move(side, destination, time))
+  requestAnimationFrame(time => move(side, destination, time, false))
 }
 
 const state = value => {
@@ -132,6 +160,8 @@ const state = value => {
   }
 }
 
+positionFloor(2)
+
 state('moveX')
 
 setInterval(() => {
@@ -139,7 +169,7 @@ setInterval(() => {
   const selecdLetter = letters[Math.floor(Math.random() * letters.length)]
   console.log(selecdLetter)
 
-  requestAnimationFrame(time => move(selecdLetter, 150, time))
+  requestAnimationFrame(time => move(selecdLetter, 3, time))
 }, 5000)
 
 /*
