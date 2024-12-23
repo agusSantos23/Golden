@@ -15,8 +15,14 @@
 }
 
 
-.irisMove{
+.irisMoveX{
   transform: translate(3px);
+  transform-origin: center;
+  transition: transform .2s ease-in-out;
+}
+
+.irisMoveB{
+  transform: translate(0, 1px);
   transform-origin: center;
   transition: transform .2s ease-in-out;
 }
@@ -35,7 +41,7 @@
   right: 10%;
 }
 
-.divMouthMove{
+.divMouthMoveX{
   bottom: 0;
   right: 3px;
 }

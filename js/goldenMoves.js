@@ -1,17 +1,20 @@
+import state from './state.js'
+
 const golden = document.getElementById('Golden')
 
 let lastTime = null
 let positionX = 60
-let limit = []
-const stepSize = 1
+let positionY = 40
+const limitX = []
+let stepSize = 1
 const duration = 1000
 
 const positionFloor = position => {
   const floor = document.getElementById('floor')
   switch (position) {
     case 2:
-      limit[0] = 51.5
-      limit[1] = 69
+      limitX[0] = 51.5
+      limitX[1] = 69
       break
 
     default:
@@ -21,158 +24,6 @@ const positionFloor = position => {
   floor.style.transform = `translateX(-${position * window.innerWidth}px)`
 }
 
-const move = (side, destination, time, isFirstRun = true) => {
-  const stopMove = () => {
-    lastTime = null
-
-    legFL.classList.remove('legMoveStartFL')
-    legFR.classList.remove('legMoveStartFR')
-    legBL.classList.remove('legMoveStartBL')
-    legBR.classList.remove('legMoveStartBR')
-
-    rectIrisR.classList.remove('irisMove')
-    rectIrisL.classList.remove('irisMove')
-  }
-
-  if (!golden.classList.contains('bodyMove')) return
-
-  const legFL = document.getElementById('legMoveStopFL')
-  const legFR = document.getElementById('legMoveStopFR')
-  const legBL = document.getElementById('legMoveStopBL')
-  const legBR = document.getElementById('legMoveStopBR')
-
-  const rectIrisR = document.getElementById('rectIrisR')
-  const rectIrisL = document.getElementById('rectIrisL')
-
-  legFL.classList.add('legMoveStartFL')
-  legFR.classList.add('legMoveStartFR')
-  legBL.classList.add('legMoveStartBL')
-  legBR.classList.add('legMoveStartBR')
-
-  rectIrisR.classList.add('irisMove')
-  rectIrisL.classList.add('irisMove')
-
-  // En la primera ejecucion
-  if (isFirstRun) {
-    side === 'r' ? destination += positionX : destination = positionX - destination
-  }
-
-  if (!lastTime) {
-    lastTime = time
-  }
-
-  // Tiempo desde el ultimo frame
-  const deltaTime = time - lastTime
-  lastTime = time
-  // Calcular el desplazamiento basado en el tiempo transcurrido
-  const displacementPerMillisecond = stepSize / duration
-
-  if (side === 'r') {
-    if (positionX >= destination || positionX >= limit[1]) {
-      stopMove()
-      return
-    }
-    positionX += displacementPerMillisecond * deltaTime
-    golden.style.left = `${positionX}%`
-    golden.style.transform = ''
-  } else {
-    if (positionX <= destination || positionX <= limit[0]) {
-      stopMove()
-      return
-    }
-    positionX -= displacementPerMillisecond * deltaTime
-    golden.style.left = `${positionX}%`
-    golden.style.transform = 'scale(.7) scaleX(-1)'
-  }
-
-  requestAnimationFrame(time => move(side, destination, time, false))
-}
-
-const state = value => {
-  const golden = document.getElementById('Golden')
-  const imgBody = document.getElementById('imgBody')
-  const divHead = document.getElementById('divHead')
-  const imgHead = document.getElementById('imgHead')
-  const rectIrisR = document.getElementById('rectIrisR')
-  const rectIrisL = document.getElementById('rectIrisL')
-  const divMouth = document.getElementById('divMouth')
-  const divLegs = document.getElementById('divLegs')
-  const svgTail = document.getElementById('tail')
-
-  switch (value) {
-    case 'stop':{
-      divLegs.innerHTML = ''
-      const img = document.createElement('img')
-      img.id = 'leftLegStop'
-      img.src = './assets/svg/Golden/leftLeg.svg'
-      img.alt = 'Golden left leg'
-      divLegs.appendChild(img)
-      break
-    }
-
-    case 'moveX':{
-      // Cambiar Cuerpo
-      imgBody.src = './assets/svg/Golden/BodyMoveX.svg'
-      golden.classList.replace('bodyStop', 'bodyMove')
-
-      // Cambiar Cabeza
-      imgHead.src = './assets/svg/Golden/HeadMoveX.svg'
-      divHead.classList.replace('headStop', 'headMove')
-
-      // Cambiar Iris
-      rectIrisR.classList.add('irisMove')
-      rectIrisL.classList.add('irisMove')
-
-      // Cambiar Boca
-      divMouth.classList.add('divMouthMove')
-
-      // Cambiar a Patas
-      divLegs.innerHTML = ''
-      // FL
-      const imgFL = document.createElement('img')
-      imgFL.id = 'legMoveStopFL'
-      imgFL.src = './assets/svg/Golden/legMove.svg'
-      divLegs.appendChild(imgFL)
-      // FR
-      const imgFR = document.createElement('img')
-      imgFR.id = 'legMoveStopFR'
-      imgFR.src = './assets/svg/Golden/legMove.svg'
-      divLegs.appendChild(imgFR)
-      // BL
-      const imgBL = document.createElement('img')
-      imgBL.id = 'legMoveStopBL'
-      imgBL.src = './assets/svg/Golden/legMove.svg'
-      divLegs.appendChild(imgBL)
-      // BR
-      const imgBR = document.createElement('img')
-      imgBR.id = 'legMoveStopBR'
-      imgBR.src = './assets/svg/Golden/legMove.svg'
-      divLegs.appendChild(imgBR)
-
-      // Cambiar Rabo
-      svgTail.classList.replace('tailStop', 'tailMove')
-      svgTail.classList.contains('tailWaggingStop-3') && svgTail.classList.replace('tailWaggingStop-3', 'tailWaggingMove-3')
-      break
-    }
-
-    default:
-      break
-  }
-}
-
-positionFloor(2)
-
-state('moveX')
-
-setInterval(() => {
-  const letters = ['l', 'r']
-  const selecdLetter = letters[Math.floor(Math.random() * letters.length)]
-  console.log(selecdLetter)
-
-  requestAnimationFrame(time => move(selecdLetter, 3, time))
-}, 5000)
-
-/*
 const legWave = () => {
   const svgLeftLeg = document.getElementById('leftLegStop')
 
@@ -182,5 +33,145 @@ const legWave = () => {
   }, 2500)
 }
 
+const move = (side, destination) => {
+  if (!['bodyMoveX', 'bodyMoveB'].some(className => golden.classList.contains(className))) return
+
+  const rectIrisR = document.getElementById('rectIrisR')
+  const rectIrisL = document.getElementById('rectIrisL')
+
+  switch (side) {
+    case 'r':
+    case 'l':
+      state('moveX')
+
+      document.getElementById('legMoveStopXFR').classList.add('legMoveStartX0')
+      document.getElementById('legMoveStopXBL').classList.add('legMoveStartX0')
+      document.getElementById('legMoveStopXFL').classList.add('legMoveStartX1')
+      document.getElementById('legMoveStopXBR').classList.add('legMoveStartX1')
+
+      rectIrisR.classList.add('irisMoveX')
+      rectIrisL.classList.add('irisMoveX')
+
+      // Calcular el destino basado en la direccion
+      side === 'r' ? destination += positionX : destination = positionX - destination
+      stepSize = 1
+      break
+
+    case 'b':
+      state('moveB')
+
+      document.getElementById('legMoveStopBFR').classList.add('legMoveStartB0')
+      document.getElementById('legMoveStopBBL').classList.add('legMoveStartB0')
+      document.getElementById('legMoveStopBFL').classList.add('legMoveStartB1')
+      document.getElementById('legMoveStopBBR').classList.add('legMoveStartB1')
+
+      rectIrisR.classList.add('irisMoveB')
+      rectIrisL.classList.add('irisMoveB')
+
+      destination = positionY - destination - 10
+      stepSize = 7
+
+      break
+  }
+
+  const update = time => {
+    if (!lastTime) {
+      lastTime = time
+    }
+
+    // Tiempo desde el último frame
+    const deltaTime = time - lastTime
+    lastTime = time
+
+    // Calcular el desplazamiento basado en el tiempo transcurrido
+    const displacementPerMillisecond = stepSize / duration
+
+    switch (side) {
+      case 'r':
+        if (positionX >= destination || positionX >= limitX[1]) {
+          document.getElementById('legMoveStopXFR').classList.remove('legMoveStartX0')
+          document.getElementById('legMoveStopXBL').classList.remove('legMoveStartX0')
+          document.getElementById('legMoveStopXFL').classList.remove('legMoveStartX1')
+          document.getElementById('legMoveStopXBR').classList.remove('legMoveStartX1')
+
+          rectIrisR.classList.remove('irisMoveX')
+          rectIrisL.classList.remove('irisMoveX')
+          return
+        }
+        positionX += displacementPerMillisecond * deltaTime
+        golden.style.left = `${positionX}%`
+        golden.style.transform = ''
+        break
+
+      case 'l':
+        if (positionX <= destination || positionX <= limitX[0]) {
+          document.getElementById('legMoveStopXFR').classList.remove('legMoveStartX0')
+          document.getElementById('legMoveStopXBL').classList.remove('legMoveStartX0')
+          document.getElementById('legMoveStopXFL').classList.remove('legMoveStartX1')
+          document.getElementById('legMoveStopXBR').classList.remove('legMoveStartX1')
+
+          rectIrisR.classList.remove('irisMoveX')
+          rectIrisL.classList.remove('irisMoveX')
+          return
+        }
+        positionX -= displacementPerMillisecond * deltaTime
+        golden.style.left = `${positionX}%`
+        golden.style.transform = 'scale(.7) scaleX(-1)'
+        break
+
+      case 'b':
+
+        if (positionY <= destination || positionY <= -30) {
+          document.getElementById('legMoveStopBFR').classList.remove('legMoveStartB0')
+          document.getElementById('legMoveStopBBL').classList.remove('legMoveStartB0')
+          document.getElementById('legMoveStopBFL').classList.remove('legMoveStartB1')
+          document.getElementById('legMoveStopBBR').classList.remove('legMoveStartB1')
+
+          rectIrisR.classList.remove('irisMoveB')
+          rectIrisL.classList.remove('irisMoveB')
+          return
+        }
+
+        positionY -= displacementPerMillisecond * deltaTime
+        golden.style.bottom = `${positionY}%`
+        golden.style.transform = 'scale(.7)'
+
+        break
+    }
+
+    requestAnimationFrame(update)
+  }
+
+  requestAnimationFrame(update)
+
+  lastTime = null
+}
+
+const startIntervalMove = () => {
+  state('moveX')
+  const intervalMove = setInterval(() => {
+    const letters = ['r', 'r', 'l', 'l', 'b', 'b']
+    const selecdLetter = letters[Math.floor(Math.random() * letters.length)]
+    console.log(selecdLetter)
+
+    if (selecdLetter === 's') {
+      clearInterval(intervalMove)
+      golden.style.transform = 'scale(.7)'
+      state('stop')
+
+      setTimeout(() => {
+        state('moveX')
+        startIntervalMove()
+      }, 60000)
+    } else {
+      move(selecdLetter, Math.floor((Math.random() * 5) + 2))
+    }
+  }, 7000)
+}
+
+positionFloor(2)
+
+//startIntervalMove()
+
+state('moveX')
 golden.addEventListener('click', legWave)
-*/
