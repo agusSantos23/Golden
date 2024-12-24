@@ -3,6 +3,7 @@ const state = value => {
   const imgBody = document.getElementById('imgBody')
   const divHead = document.getElementById('divHead')
   const imgHead = document.getElementById('imgHead')
+  const divEyes = document.getElementById('divEyes')
   const rectIrisR = document.getElementById('rectIrisR')
   const rectIrisL = document.getElementById('rectIrisL')
   const divMouth = document.getElementById('divMouth')
@@ -21,11 +22,13 @@ const state = value => {
       divHead.classList = ''
       divHead.classList.add('headStop')
 
-      /// Cambiar Iris
+      /// Cambiar Ojos
+      divEyes.style.display = 'block'
       rectIrisR.classList.remove('irisMove')
       rectIrisL.classList.remove('irisMove')
 
       // Cambiar Boca
+      divMouth.style.display = 'block'
       divMouth.classList.remove('divMouthMove')
 
       // Cambiar a Pata
@@ -53,11 +56,13 @@ const state = value => {
       divHead.classList = ''
       divHead.classList.add('headMoveX')
 
-      // Cambiar Iris
+      // Cambiar Ojos
+      divEyes.style.display = 'block'
       rectIrisR.classList.add('irisMove')
       rectIrisL.classList.add('irisMove')
 
       // Cambiar Boca
+      divMouth.style.display = 'block'
       divMouth.classList.add('divMouthMoveX')
 
       // Cambiar a Patas
@@ -84,8 +89,9 @@ const state = value => {
       divLegs.appendChild(imgBR)
 
       // Cambiar Rabo
-      svgTail.classList.replace('tailStop', 'tailMove')
-      svgTail.classList.contains('tailWaggingStop-3') && svgTail.classList.replace('tailWaggingStop-3', 'tailWaggingMoveX-3')
+      svgTail.classList = ''
+      svgTail.classList.add('tailMoveX')
+      svgTail.classList.add('tailWaggingMoveX-3')
       break
     }
 
@@ -100,7 +106,10 @@ const state = value => {
       divHead.classList = ''
       divHead.classList.add('headMoveB')
 
+      divEyes.style.display = 'block'
+
       // Cambiar Boca
+      divMouth.style.display = 'block'
       divMouth.classList.replace('divMouthMoveX', 'divMouthStop')
 
       // Cambiar a Patas
@@ -127,13 +136,56 @@ const state = value => {
       divLegs.appendChild(imgBR)
 
       // Cambiar Rabo
-      svgTail.classList.replace('tailMove', 'tailStop')
-      svgTail.classList.contains('tailWaggingStop-3') && svgTail.classList.replace('tailWaggingStop-3', 'tailWaggingMoveB-3')
+      svgTail.classList = ''
+      svgTail.classList.add('tailStop')
+      svgTail.classList.add('tailWaggingMoveY-3')
       break
     }
 
     case 'moveT':{
+      // Cambiar Cuerpo
+      imgBody.src = './assets/svg/Golden/bodyMoveT.svg'
+      golden.classList = ''
+      golden.classList.add('bodyMoveT')
 
+      // Cambiar Cabeza
+      imgHead.src = './assets/svg/Golden/headMoveT.svg'
+      divHead.classList = ''
+      divHead.classList.add('headMoveT')
+
+      // Cambiar Ojos
+      divEyes.style.display = 'none'
+
+      // Cambiar Boca
+      divMouth.style.display = 'none'
+
+      // Cambiar a Patas
+      divLegs.innerHTML = ''
+      // FL
+      const imgFL = document.createElement('img')
+      imgFL.id = 'legMoveStopTFL'
+      imgFL.src = './assets/svg/Golden/legMoveT.svg'
+      divLegs.appendChild(imgFL)
+      // FR
+      const imgFR = document.createElement('img')
+      imgFR.id = 'legMoveStopTFR'
+      imgFR.src = './assets/svg/Golden/legMoveT.svg'
+      divLegs.appendChild(imgFR)
+      // BL
+      const imgBL = document.createElement('img')
+      imgBL.id = 'legMoveStopTBL'
+      imgBL.src = './assets/svg/Golden/legMoveT.svg'
+      divLegs.appendChild(imgBL)
+      // BR
+      const imgBR = document.createElement('img')
+      imgBR.id = 'legMoveStopTBR'
+      imgBR.src = './assets/svg/Golden/legMoveT.svg'
+      divLegs.appendChild(imgBR)
+
+      // Cambiar Rabo
+      svgTail.classList = ''
+      svgTail.classList.add('tailMoveT')
+      svgTail.classList.add('tailWaggingMoveY-3')
     }
   }
 }

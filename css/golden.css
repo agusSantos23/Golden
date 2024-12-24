@@ -29,6 +29,11 @@ svg {
   height: 118px;
 }
 
+.bodyMoveT{
+  width: 161px;
+  height: 69px;
+}
+
 .headStop{
   transform: translate(-50%, -100%);
   bottom: 95%;
@@ -43,6 +48,11 @@ svg {
 .headMoveB{
   bottom: 170%;
   left: -14.5%;
+}
+
+.headMoveT{
+  bottom: 315%;
+  left: -14%;
 }
 
 #leftLegStop{
@@ -166,11 +176,11 @@ svg {
   z-index: -1;
 }
 
-.legMoveStartB0{
-  animation: walkB0 .8s linear infinite;
+.legMoveStartY0{
+  animation: walkY0 .8s linear infinite;
 }
 
-@keyframes walkB0 {
+@keyframes walkY0 {
   0%,100% {
     transform: translateY(0px);
   }
@@ -200,11 +210,11 @@ svg {
   z-index: -1;
 }
 
-.legMoveStartB1{
-  animation: walkB1 .8s linear infinite;
+.legMoveStartY1{
+  animation: walkY1 .8s linear infinite;
 }
 
-@keyframes walkB1 {
+@keyframes walkY1 {
   0%,100% {
     transform: translateY(0px);
   }
@@ -220,13 +230,41 @@ svg {
 
 
 
+/* T */
+
+#legMoveStopTFR{
+  transform-origin: top center;
+  position: absolute;
+  bottom: -80%;
+  right: 25px;
+  z-index: -1;
+}
+
+#legMoveStopTBL{
+  transform-origin: top center;
+  position: absolute;
+  bottom: -130%;
+  left: -1px;
+  z-index: 2;
+}
 
 
 
+#legMoveStopTFL{
+  transform-origin: top center;
+  position: absolute;
+  bottom: -80%;
+  left: 25px;
+  z-index: -1;
 
+}
 
-
-
+#legMoveStopTBR{
+  transform-origin: top center;
+  position: absolute;
+  bottom: -130%;
+  right: -1px;
+}
 
 
 
@@ -243,14 +281,14 @@ svg {
   z-index: -5;
 }
 
-.tailMove{
+.tailMoveT{
   position: absolute;
   transform-origin: bottom left; 
-  bottom: 50px;
-  left: 50px;
-  z-index: -5;
-  transform: scaleX(-1);
+  bottom: 35px;
+  right: -70px;
+  z-index: 3;
 }
+
 
 .tailWaggingStop-3 {
   animation: tailWaggingStop 3s ease-in-out infinite; 
@@ -271,12 +309,21 @@ svg {
 }
 
 
+.tailMoveX{
+  position: absolute;
+  transform-origin: bottom left; 
+  bottom: 50px;
+  left: 50px;
+  z-index: -5;
+  transform: scaleX(-1);
+}
+
 .tailWaggingMoveX-3 {
-  animation: tailWaggingMove 3s ease-in-out infinite; 
+  animation: tailWaggingMoveX 3s ease-in-out infinite; 
 }
 
 .tailWaggingMoveX-07 {
-  animation: tailWaggingMove .7s ease-in-out infinite; 
+  animation: tailWaggingMoveX .7s ease-in-out infinite; 
 }
 
 @keyframes tailWaggingMoveX {
@@ -290,15 +337,15 @@ svg {
 }
 
 
-.tailWaggingMoveB-3 {
-  animation: tailWaggingMoveB 3s ease-in-out infinite; 
+.tailWaggingMoveY-3 {
+  animation: tailWaggingMoveY 3s ease-in-out infinite; 
 }
 
-.tailWaggingMoveB-07 {
-  animation: tailWaggingMoveB .7s ease-in-out infinite; 
+.tailWaggingMoveY-07 {
+  animation: tailWaggingMoveY .7s ease-in-out infinite; 
 }
 
-@keyframes tailWaggingMoveB {
+@keyframes tailWaggingMoveY {
   0%,100% {
     transform: scaleX(-1) rotate(40deg);  
   }

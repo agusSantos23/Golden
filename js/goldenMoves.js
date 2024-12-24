@@ -14,7 +14,7 @@ const positionFloor = position => {
   switch (position) {
     case 2:
       limitX[0] = 51.5
-      limitX[1] = 69
+      limitX[1] = 67
       break
 
     default:
@@ -34,7 +34,7 @@ const legWave = () => {
 }
 
 const move = (side, destination) => {
-  if (!['bodyMoveX', 'bodyMoveB'].some(className => golden.classList.contains(className))) return
+  if (!['bodyMoveX', 'bodyMoveB', 'bodyMoveT'].some(className => golden.classList.contains(className))) return
 
   const rectIrisR = document.getElementById('rectIrisR')
   const rectIrisL = document.getElementById('rectIrisL')
@@ -60,15 +60,28 @@ const move = (side, destination) => {
     case 'b':
       state('moveB')
 
-      document.getElementById('legMoveStopBFR').classList.add('legMoveStartB0')
-      document.getElementById('legMoveStopBBL').classList.add('legMoveStartB0')
-      document.getElementById('legMoveStopBFL').classList.add('legMoveStartB1')
-      document.getElementById('legMoveStopBBR').classList.add('legMoveStartB1')
+      document.getElementById('legMoveStopBFR').classList.add('legMoveStartY0')
+      document.getElementById('legMoveStopBBL').classList.add('legMoveStartY0')
+      document.getElementById('legMoveStopBFL').classList.add('legMoveStartY1')
+      document.getElementById('legMoveStopBBR').classList.add('legMoveStartY1')
 
       rectIrisR.classList.add('irisMoveB')
       rectIrisL.classList.add('irisMoveB')
 
       destination = positionY - destination - 10
+      stepSize = 7
+
+      break
+
+    case 't':
+      state('moveT')
+
+      document.getElementById('legMoveStopTFR').classList.add('legMoveStartY0')
+      document.getElementById('legMoveStopTBL').classList.add('legMoveStartY0')
+      document.getElementById('legMoveStopTFL').classList.add('legMoveStartY1')
+      document.getElementById('legMoveStopTBR').classList.add('legMoveStartY1')
+
+      destination += positionY
       stepSize = 7
 
       break
@@ -122,10 +135,10 @@ const move = (side, destination) => {
       case 'b':
 
         if (positionY <= destination || positionY <= -30) {
-          document.getElementById('legMoveStopBFR').classList.remove('legMoveStartB0')
-          document.getElementById('legMoveStopBBL').classList.remove('legMoveStartB0')
-          document.getElementById('legMoveStopBFL').classList.remove('legMoveStartB1')
-          document.getElementById('legMoveStopBBR').classList.remove('legMoveStartB1')
+          document.getElementById('legMoveStopBFR').classList.remove('legMoveStartY0')
+          document.getElementById('legMoveStopBBL').classList.remove('legMoveStartY0')
+          document.getElementById('legMoveStopBFL').classList.remove('legMoveStartY1')
+          document.getElementById('legMoveStopBBR').classList.remove('legMoveStartY1')
 
           rectIrisR.classList.remove('irisMoveB')
           rectIrisL.classList.remove('irisMoveB')
@@ -133,6 +146,23 @@ const move = (side, destination) => {
         }
 
         positionY -= displacementPerMillisecond * deltaTime
+        golden.style.bottom = `${positionY}%`
+        golden.style.transform = 'scale(.7)'
+
+        break
+
+      case 't':
+
+        if (positionY >= destination || positionY <= 60) {
+          document.getElementById('legMoveStopTFR').classList.remove('legMoveStartY0')
+          document.getElementById('legMoveStopTBL').classList.remove('legMoveStartY0')
+          document.getElementById('legMoveStopTFL').classList.remove('legMoveStartY1')
+          document.getElementById('legMoveStopTBR').classList.remove('legMoveStartY1')
+
+          return
+        }
+
+        positionY += displacementPerMillisecond * deltaTime
         golden.style.bottom = `${positionY}%`
         golden.style.transform = 'scale(.7)'
 
@@ -150,7 +180,7 @@ const move = (side, destination) => {
 const startIntervalMove = () => {
   state('moveX')
   const intervalMove = setInterval(() => {
-    const letters = ['r', 'r', 'l', 'l', 'b', 'b']
+    const letters = ['r', 'r', 'l', 'l', 'b', 'b', 't', 't']
     const selecdLetter = letters[Math.floor(Math.random() * letters.length)]
     console.log(selecdLetter)
 
@@ -164,14 +194,13 @@ const startIntervalMove = () => {
         startIntervalMove()
       }, 60000)
     } else {
-      move(selecdLetter, Math.floor((Math.random() * 5) + 2))
+      move(selecdLetter, Math.floor((Math.random() * 4) + 2))
     }
   }, 7000)
 }
 
 positionFloor(2)
 
-//startIntervalMove()
+startIntervalMove()
 
-state('moveX')
 golden.addEventListener('click', legWave)
