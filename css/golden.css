@@ -6,7 +6,7 @@ svg {
   transform-origin: center center;
   position: relative;
   left: 60%;
-  bottom: 40%;
+  bottom: 30%;
   transform: scale(.7);
   transition: transform .5s;
 }
@@ -17,6 +17,7 @@ svg {
 .bodyStop{
   width: 182px;
   height: 147px;
+  cursor: pointer;
 }
 
 .bodyMoveX{
@@ -32,6 +33,7 @@ svg {
 .bodyMoveT{
   width: 161px;
   height: 69px;
+  transform: translateY(400px);
 }
 
 .headStop{

@@ -4,24 +4,20 @@ const golden = document.getElementById('Golden')
 
 let lastTime = null
 let positionX = 60
-let positionY = 40
+let positionY = 30
 const limitX = []
 let stepSize = 1
 const duration = 1000
 
 const positionFloor = position => {
-  const floor = document.getElementById('floor')
+  document.getElementById('floor').style.transform = `translateX(-${position * window.innerWidth}px)`
+
   switch (position) {
     case 2:
       limitX[0] = 51.5
       limitX[1] = 67
       break
-
-    default:
-      break
   }
-
-  floor.style.transform = `translateX(-${position * window.innerWidth}px)`
 }
 
 const legWave = () => {
@@ -68,7 +64,7 @@ const move = (side, destination) => {
       rectIrisR.classList.add('irisMoveB')
       rectIrisL.classList.add('irisMoveB')
 
-      destination = positionY - destination - 10
+      destination = positionY - destination - 15
       stepSize = 7
 
       break
@@ -81,7 +77,7 @@ const move = (side, destination) => {
       document.getElementById('legMoveStopTFL').classList.add('legMoveStartY1')
       document.getElementById('legMoveStopTBR').classList.add('legMoveStartY1')
 
-      destination += positionY
+      destination += positionY + 15
       stepSize = 7
 
       break
@@ -152,16 +148,13 @@ const move = (side, destination) => {
         break
 
       case 't':
-
-        if (positionY >= destination || positionY <= 60) {
+        if (positionY >= destination || positionY >= 40) {
           document.getElementById('legMoveStopTFR').classList.remove('legMoveStartY0')
           document.getElementById('legMoveStopTBL').classList.remove('legMoveStartY0')
           document.getElementById('legMoveStopTFL').classList.remove('legMoveStartY1')
           document.getElementById('legMoveStopTBR').classList.remove('legMoveStartY1')
-
           return
         }
-
         positionY += displacementPerMillisecond * deltaTime
         golden.style.bottom = `${positionY}%`
         golden.style.transform = 'scale(.7)'
@@ -179,8 +172,9 @@ const move = (side, destination) => {
 
 const startIntervalMove = () => {
   state('moveX')
+
   const intervalMove = setInterval(() => {
-    const letters = ['r', 'r', 'l', 'l', 'b', 'b', 't', 't']
+    const letters = ['r', 'r', 'l', 'l', 'b', 'b', 't', 't', 's']
     const selecdLetter = letters[Math.floor(Math.random() * letters.length)]
     console.log(selecdLetter)
 

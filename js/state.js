@@ -1,4 +1,4 @@
-const state = value => {
+export default value => {
   const golden = document.getElementById('Golden')
   const imgBody = document.getElementById('imgBody')
   const divHead = document.getElementById('divHead')
@@ -29,7 +29,7 @@ const state = value => {
 
       // Cambiar Boca
       divMouth.style.display = 'block'
-      divMouth.classList.remove('divMouthMove')
+      divMouth.classList.remove('divMouthMoveX')
 
       // Cambiar a Pata
       divLegs.innerHTML = ''
@@ -40,8 +40,9 @@ const state = value => {
       divLegs.appendChild(img)
 
       // Cambiar Rabo
-      svgTail.classList.replace('tailMove', 'tailStop')
-      svgTail.classList.contains('tailWaggingMoveX-3') && svgTail.classList.replace('tailWaggingMoveX-3', 'tailWaggingStop-3')
+      svgTail.classList = ''
+      svgTail.classList.add('tailStop')
+      svgTail.classList.add('tailWaggingStop-3')
       break
     }
 
@@ -189,5 +190,3 @@ const state = value => {
     }
   }
 }
-
-export default state
