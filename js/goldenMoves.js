@@ -4,7 +4,7 @@ const golden = document.getElementById('Golden')
 
 let lastTime = null
 let positionX = 60
-let positionY = 30
+let positionY = 20
 const limitX = []
 let stepSize = 1
 const duration = 1000
@@ -148,7 +148,7 @@ const move = (side, destination) => {
         break
 
       case 't':
-        if (positionY >= destination || positionY >= 40) {
+        if (positionY >= destination || positionY >= 30) {
           document.getElementById('legMoveStopTFR').classList.remove('legMoveStartY0')
           document.getElementById('legMoveStopTBL').classList.remove('legMoveStartY0')
           document.getElementById('legMoveStopTFL').classList.remove('legMoveStartY1')

@@ -13,3 +13,20 @@ body{
   height: 30%;
   background-color: green;
 }
+
+
+.cloud {
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: moveCloud 30s linear;
+}
+
+@keyframes moveCloud {
+  0% {
+    transform: scale(var(--scale)) translateX(-150%) translateY(var(--start-y))
+  }
+  100% {
+    transform: scale(var(--scale)) translateX(1400%) translateY(var(--end-y))
+  }
+}
