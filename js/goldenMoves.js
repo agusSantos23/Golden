@@ -194,7 +194,10 @@ const startIntervalMove = () => {
 }
 
 positionFloor(2)
+state('stop')
 
-startIntervalMove()
+setTimeout(() => {
+  startIntervalMove()
+}, 10000)
 
 golden.addEventListener('click', legWave)
